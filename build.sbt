@@ -14,6 +14,9 @@ lazy val root = (project in file("."))
 
 githubOwner := "thachi"
 githubRepository := "scala-library-sample001"
-githubTokenSource := TokenSource.GitConfig("github.token")
+githubTokenSource := {
+  if (sys.env.contains("GITHUB_TOKEN")) TokenSource.Environment("GITHUB_TOKEN")
+  else TokenSource.GitConfig("github.token")
+}
 
 // See https://www.scala-sbt.org/1.x/docs/Using-Sonatype.html for instructions on how to publish to Sonatype.
