@@ -8,7 +8,12 @@ ThisBuild / organizationName := "example"
 lazy val root = (project in file("."))
   .settings(
     name := "scala-library-usage-sample01",
+    libraryDependencies += "com.example" %% "scala-library-sample-001" % "0.4.7-SNAPSHOT",
     libraryDependencies += scalaTest % Test
   )
+
+githubOwner := "thachi"
+githubRepository := "scala-library-sample001"
+githubTokenSource := TokenSource.GitConfig("github.token")
 
 // See https://www.scala-sbt.org/1.x/docs/Using-Sonatype.html for instructions on how to publish to Sonatype.
